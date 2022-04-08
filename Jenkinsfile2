@@ -5,6 +5,7 @@ pipeline {
     }
     stages {
     stage ('Welcome message') {
+        steps{
             script{
                   def name = "Mihai"
                   if (name == "Mihai")
@@ -14,6 +15,7 @@ pipeline {
                   sleep 2
                   echo "End of line"
                 }
+            }    
         }  
     stage ('Script permissions') {
         steps {
