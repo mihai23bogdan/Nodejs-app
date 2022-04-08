@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    environment {
+        dockerports = "3000:3000"
+    }
+    stages {
+    stage ('Welcome message') {
+            script{
+                  def name = "Mihai"
+                  if (name == "Mihai")
+                    printIn("Hi ${name}")
+                  else
+                    printIn("Hi stranger")
+                  sleep 2
+                  echo "End of line"
+                }
+        }  
+    stage ('Script permissions') {
+        steps {
+             sh 'chmod +x ./scriptclean.sh'
+            }
+        }  
+    stage ('Execute script') {
+        steps {
+             sh './scriptclean.sh'
+            }
+        }   
+    stage ('Docker build') {
+        steps {
+             sh 'docker build -t nodejs_app .'
+            }
+        }  
+    stage ('Docker run') {
+        steps {
+             sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
+            }
+        }
+    }
+}         
