@@ -13,7 +13,7 @@ pipeline {
                   def name = "Mihai"
                   if (name == "Mihai")
                     // println("Hi ${name}")
-                    println("\e[1m \033[34mHi\033[0m \033[35m${name}!\033[0m")               
+                    println("\033[34mHi\033[0m \033[35m${name}!\033[0m")               
                   else
                     println("Hi stranger")
                   sleep 2
