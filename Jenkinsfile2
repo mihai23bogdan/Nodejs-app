@@ -9,9 +9,9 @@ pipeline {
             script{
                   def name = "Mihai"
                   if (name == "Mihai")
-                    printIn("Hi ${name}")
+                    println("Hi ${name}")
                   else
-                    printIn("Hi stranger")
+                    println("Hi stranger")
                   sleep 2
                   echo "End of line"
                 }
