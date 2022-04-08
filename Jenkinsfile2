@@ -42,12 +42,14 @@ pipeline {
         steps {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
             }
-             when {
+        }
+      stage ('Finish') {
+          when {
               environment name: 'DEPLOY_FINISH', value: 'finish'
           }
           steps {
-              echo 'Job finish'
-          }    
-        }
+              echo 'Job done'
+          }   
+      }       
     }
 }         
