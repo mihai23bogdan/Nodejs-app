@@ -8,7 +8,7 @@ pipeline {
         dockerports = "3000:3000"
     }
     parameters {
-        string(name: 'VERSION', defaultValue: '2.0', description: 'version to deploy on prod')
+        string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
     }
     stages {
     stage ('Welcome message') {
