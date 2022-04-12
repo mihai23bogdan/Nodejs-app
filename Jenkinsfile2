@@ -6,7 +6,6 @@ pipeline {
     }
     environment {
         dockerports = "3000:3000"
-        DEPLOY_FINISH='finish'
     }
     stages {
     stage ('Welcome message') {
@@ -39,11 +38,6 @@ pipeline {
             }
         }  
     stage ('Docker run') {
-        when {
-            expression {
-                BRANCH_NAME == 'dev' || BRANCH_NAME == 'master'
-            }
-        }
         steps {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
             }
