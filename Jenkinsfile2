@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         dockerports = "3000:3000"
+        SERVER_CREDENTIALS = credentials('server-credentials)
     }
     stages {
     stage ('Welcome message') {
@@ -40,6 +41,8 @@ pipeline {
     stage ('Docker run') {
         steps {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
+             echo "This was done with ${SERVER_CREDENTIALS}"
+			 sh "{SERVER_CREDENTIALS}"
             }
         }
     }    
@@ -52,3 +55,4 @@ pipeline {
      }
    }  
 } 
+
