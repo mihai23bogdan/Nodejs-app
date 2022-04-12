@@ -42,7 +42,7 @@ pipeline {
         steps {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
              echo "This was done with ${SERVER_CREDENTIALS}"
-			 sh "{SERVER_CREDENTIALS}"
+			 sh "${SERVER_CREDENTIALS}"
             }
         }
     }    
