@@ -43,12 +43,13 @@ pipeline {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
             }
         }
+    }    
    post {
     success{
         echo 'Job done'
     }
     failure {
         echo 'Job failed'     
-    }
-  }  
-}         
+     }
+   }  
+} 
