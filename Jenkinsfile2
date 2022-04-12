@@ -39,6 +39,11 @@ pipeline {
             }
         }  
     stage ('Docker run') {
+        when {
+            expression {
+                BRANCH_NAME == 'dev' || BRANCH_NAME == 'master'
+            }
+        }
         steps {
              sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
             }
