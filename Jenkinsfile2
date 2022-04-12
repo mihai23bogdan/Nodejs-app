@@ -48,8 +48,7 @@ pipeline {
         echo 'Job done'
     }
     failure {
-        echo 'Job failed'
-      }     
+        echo 'Job failed'     
     }
   }  
 }         
