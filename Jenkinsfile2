@@ -3,6 +3,7 @@ pipeline {
     options {
         ansiColor('xterm')
         timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     environment {
         dockerports = "3000:3000"
