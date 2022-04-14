@@ -9,9 +9,15 @@ pipeline {
     }
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
+        booleanParam(name: 'skipWelcome', defaultValue: true, description: '')
     }
     stages {
     stage ('Welcome message') {
+        when {
+            expression {
+                params.skipWelcome
+            }
+        }
         steps{
             script{
                   def name = "Mihai"
@@ -56,4 +62,3 @@ pipeline {
      }
    }  
 } 
-
