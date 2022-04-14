@@ -1,3 +1,4 @@
+// rename build name
 currentBuild.displayName= "Nodejs-app-#"+currentBuild.number
 
 pipeline {
@@ -18,6 +19,8 @@ pipeline {
     }
     stages {
     stage ('Welcome message') {
+        // If one stage fail, all of them should fail
+        failFast true
         when {
             expression {
                 params.executeWelcome == true
