@@ -3,7 +3,10 @@ pipeline {
     options {
         ansiColor('xterm')
         timestamps()
+        // only this number of build logs are kept 
         buildDiscarder(logRotator(numToKeepStr: '10'))
+        //
+        currentBuild.displayName= "Nodejs-app-#"+${params.VERSION}
     }
     environment {
         dockerports = "3000:3000"
