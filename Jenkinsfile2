@@ -9,13 +9,14 @@ pipeline {
     }
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
-        booleanParam(name: 'skipWelcome', defaultValue: true, description: '')
+        choice(name: 'VERSION', choices: ['1.1', '2.2', '3.3'], description: '')
+        booleanParam(name: 'executeWelcome', defaultValue: true, description: '')
     }
     stages {
     stage ('Welcome message') {
         when {
             expression {
-                params.skipWelcome
+                params.executeWelcome == true
             }
         }
         steps{
