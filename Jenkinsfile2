@@ -48,6 +48,13 @@ pipeline {
                 }
             }
         }
+        stage ('Start the App script') {
+         steps {
+            script{
+                gv.startingApp()
+            }
+        }
+    }  
     stage ('Script permissions') {
         steps {
              sh 'chmod +x ./scriptclean.sh'
