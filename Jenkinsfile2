@@ -1,5 +1,7 @@
 // rename build name
 currentBuild.displayName= "Nodejs-app-#"+currentBuild.number
+// define variable for imported groovy script
+def gv
 
 pipeline {
     agent any
@@ -58,6 +60,9 @@ pipeline {
         }   
     stage ('Docker build') {
         steps {
+            script{
+                gv.buildApp()
+            }
              sh 'docker build -t nodejs_app .'
             }
         }  
