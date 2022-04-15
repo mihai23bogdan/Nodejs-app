@@ -39,6 +39,13 @@ pipeline {
                 }
             }    
         }  
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
     stage ('Script permissions') {
         steps {
              sh 'chmod +x ./scriptclean.sh'
