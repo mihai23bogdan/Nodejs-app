@@ -1,4 +1,9 @@
 def buildApp() {
-  echo 'building the application using this script'
+  echo 'BUILDING THE APPLICATION'
 }
+
+def startingApp() {
+  echo 'START THE APP'
+}
+
 return this
