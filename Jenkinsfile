@@ -1,9 +1,11 @@
 pipeline {
     agent any
     environment {
-        dockerports = "3000:3000"
         dockerimage = "nodeappinitial"
         dockercontainer = "node.jsinitial"
+    }
+     parameters {
+        string(name: 'PORT', defaultValue: '', description: 'Port number')
     }
     stages {
     stage ('Docker build') {
@@ -13,7 +15,7 @@ pipeline {
         }  
     stage ('Docker run') {
         steps {
-             sh 'docker run -p ${dockerports} -d --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}"'
+             sh 'sh "docker run -d -p ${params.PORT}:3000 --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}"'
             }
         }
     }
