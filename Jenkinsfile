@@ -6,16 +6,6 @@ pipeline {
         dockercontainer = "node.jsinitial"
     }
     stages {
-    // stage ('Script permissions') {
-        // steps {
-             // sh 'chmod +x ./scriptclean.sh'
-            // }
-        // }  
-    // stage ('Execute script') {
-        // steps {
-             // sh './scriptclean.sh'
-            // }
-        // }   
     stage ('Docker build') {
         steps {
              sh 'docker build -t ${dockerimage}:${BUILD_NUMBER} .'
