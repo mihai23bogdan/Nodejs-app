@@ -15,7 +15,7 @@ pipeline {
         }  
     stage ('Docker run') {
         steps {
-              sh "docker run -d -p ${params.PORT}:8080 --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}"
+              sh "docker run -d -p ${params.PORT}:3000 --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}"
             }
         }
     }
