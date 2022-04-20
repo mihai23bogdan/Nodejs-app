@@ -13,6 +13,8 @@ pipeline {
     }
     environment {
         dockerports = "3000:3000"
+        dockerimage = "nodeaps"
+        dockercontainer = "node.jsss"
     }
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
@@ -57,26 +59,29 @@ pipeline {
     }  
     stage ('Script permissions') {
         steps {
-             sh 'chmod +x ./scriptclean.sh'
+        script {
+             gv.scriptpermimisionApp()
             }
+           }
         }  
     stage ('Execute script') {
-        steps {
-             sh './scriptclean.sh'
+         steps {
+        script {
+             gv.executescriptApp()
             }
+           }
         }   
     stage ('Docker build') {
         steps {
             script{
                 gv.buildApp()
             }
-             sh 'docker build -t nodejs_app .'
-            }
+           }
         }  
     stage ('Docker run') {
         steps {
-             sh 'docker run -p ${dockerports} -d --name nodejs nodejs_app'
-             echo "deploying version ${params.VERSION}"
+        script {
+              gv.dockerrunApp()
             }
         }
     }    
