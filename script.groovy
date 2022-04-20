@@ -20,7 +20,7 @@ def dockerrunApp() {
   echo "deploying version ${params.VERSION}"
 }
 
-def dockerrunApp() {
+def welcomeApp() {
   def name = "Mihai"
   if (name == "Mihai")
   // println("Hi ${name}")
