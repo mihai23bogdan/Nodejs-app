@@ -21,7 +21,13 @@ def dockerrunApp() {
 }
 
 def dockerrunApp() {
-  sh 'docker run -p ${dockerports} -d --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}'
-  echo "deploying version ${params.VERSION}"
+  def name = "Mihai"
+  if (name == "Mihai")
+  // println("Hi ${name}")
+  println("\033[34mHi\033[0m \033[35m${name}!\033[0m")               
+  else
+   println("Hi stranger")
+   sleep 2
+   echo "End of line"
 }
 return this
