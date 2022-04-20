@@ -20,4 +20,8 @@ def dockerrunApp() {
   echo "deploying version ${params.VERSION}"
 }
 
+def dockerrunApp() {
+  sh 'docker run -p ${dockerports} -d --name ${dockercontainer}${BUILD_NUMBER} ${dockerimage}:${BUILD_NUMBER}'
+  echo "deploying version ${params.VERSION}"
+}
 return this
