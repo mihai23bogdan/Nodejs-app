@@ -22,6 +22,13 @@ pipeline {
         booleanParam(name: 'executeWelcome', defaultValue: true, description: '')
     }
     stages {
+      stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
     stage ('Welcome message') {
         // If one stage fail, all of them should fail
         failFast true
@@ -32,24 +39,10 @@ pipeline {
         }
         steps{
             script{
-                  def name = "Mihai"
-                  if (name == "Mihai")
-                    // println("Hi ${name}")
-                    println("\033[34mHi\033[0m \033[35m${name}!\033[0m")               
-                  else
-                    println("Hi stranger")
-                  sleep 2
-                  echo "End of line"
+               gv.welcomeApp()
                 }
             }    
         }  
-        stage("init") {
-            steps {
-                script {
-                    gv = load "script.groovy"
-                }
-            }
-        }
         stage ('Start the App script') {
          steps {
             script{
